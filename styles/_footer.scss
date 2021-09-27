@@ -1,0 +1,18 @@
+footer {
+    padding: 20px 0;
+    background-color: #000;
+    margin-top: 50px;
+    
+    p {
+        font-size: 1rem;
+        color: #fff;
+        text-align: center;
+        margin: 0;
+
+        &.copy {
+            margin-top: 5px;
+            font-size: 0.8rem;
+        }
+    }
+
+}

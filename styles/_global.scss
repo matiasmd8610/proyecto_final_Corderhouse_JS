@@ -1,0 +1,51 @@
+//VARIABLES
+$primary-blue: rgb(0, 19, 83);
+$secondary-blue: #084298; 
+
+html {
+    font-size: 16px;;
+}
+
+body {
+    line-height: 1.4;
+    font-size: 1rem;
+    font-family: 'Dosis', sans-serif;
+    font-weight: 400;
+    color: #222;
+    background-color: #f8f8f8;
+    padding-top: 76px;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+h1 {
+    font-family: 'Monoton', sans-serif;
+    font-weight: 400;
+}
+
+h2 {
+    font-family: 'Dosis', sans-serif;
+    font-weight: 400;
+}
+
+main {
+    min-height: 100vh;
+}
+
+section {
+    padding-top: 3rem;
+}
+
+.overlay {
+    height: 100%;
+    width: 100%;
+    pointer-events: none;
+    position: fixed;
+    top: 0;
+    z-index: 7;
+    backdrop-filter: blur(3px);
+    background-color: rgba($color: #000000, $alpha: 0.7);
+}
