@@ -12,7 +12,7 @@ body {
     font-family: 'Dosis', sans-serif;
     font-weight: 400;
     color: #222;
-    background-color: #f8f8f8;
+    background-color: #f2f2f2;
     padding-top: 76px;
 }
 
@@ -37,6 +37,15 @@ main {
 
 section {
     padding-top: 3rem;
+
+    @media(max-width: 991px) {
+        padding-top: 1.5rem;
+    }
+}
+
+.container {
+    padding-left: 15px !important;
+    padding-right: 15px !important;
 }
 
 .overlay {

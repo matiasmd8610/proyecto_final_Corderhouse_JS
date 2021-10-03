@@ -107,7 +107,7 @@ const searchProduct = (productId) => {
 
 
 //FUNCION PARA GENERAR EL HTML DE TODOS LOS PRODUCTOS DEL CARRITO
-const cart = () => {
+const cart = (htmlContainer) => {
 
     let item = sessionStorage.getItem("productsCart");
     if (item) { //Pregunto si existe "productsCart" en sessionStorage
@@ -126,7 +126,7 @@ const cart = () => {
                     </div>`;
         }
 
-        $('.cart-panel-content').html(html);
+        $(htmlContainer).html(html);
         cartTotal();
         document.querySelector('.cart-items').textContent = totalItems();
 
@@ -151,28 +151,35 @@ const cartTotal = () => {
 //FUNCIÓN PARA BORRAR ELEMENTOS DEL CARRITO
 const deleteItemCart = (id) => {
 
-    const productId = id;
-    let almacenados = JSON.parse(sessionStorage.getItem("productsCart"));
+    const confirmDelete = confirm("¿Seguro que desea borrar el producto?");
 
-    let products = document.querySelectorAll("#cart-panel .product");
-    products.forEach((element) => {
-        if (element.getAttribute('data-id') == id) {
-            $(element).fadeOut('slow', () =>{
-                $(element).remove();
-            });
-        }
-    });
+    if (confirmDelete) {
 
-    const removeIndex = almacenados.findIndex((element) => { // Busco la posición del elemento modificado en el array de productos del carrito
-        return element.id == id;
-    });
+        const productId = id;
+        let almacenados = JSON.parse(sessionStorage.getItem("productsCart"));
+    
+        let products = document.querySelectorAll("#cart-panel .product");
+        products.forEach((element) => {
+            if (element.getAttribute('data-id') == id) {
+                $(element).fadeOut('slow', () =>{
+                    $(element).remove();
+                });
+            }
+        });
+    
+        const removeIndex = almacenados.findIndex((element) => { // Busco la posición del elemento modificado en el array de productos del carrito
+            return element.id == id;
+        });
+    
+        almacenados.splice( removeIndex, 1 );
+        let almacenados_string = JSON.stringify(almacenados);
+        sessionStorage.setItem("productsCart", almacenados_string);
+        totalItems();
+        cartTotal();
+        document.querySelector('.cart-items').textContent = totalItems();
 
-    almacenados.splice( removeIndex, 1 );
-    let almacenados_string = JSON.stringify(almacenados);
-    sessionStorage.setItem("productsCart", almacenados_string);
-    totalItems();
-    cartTotal();
-    document.querySelector('.cart-items').textContent = totalItems();
+    }
+
 }
 
 //FUNCIÓN PARA MOSTRAR EL TOTAL CUANDO SE CAMBIA LA CANTIDAD DE PRODUCTOS ELEGIDA

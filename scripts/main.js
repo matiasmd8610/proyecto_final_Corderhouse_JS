@@ -67,7 +67,7 @@ document.querySelector('.overlay').style.display = 'none';
 //LLAMO A LAS FUNCIONES QUE ARMAR LOS CATALOGOS TANTO DE LA HOME (OFERTAS DEL DIA) COMO DE LA SECCIÓN NUESTROS VINOS
 buildCatalog(products);
 buildCatalogOnSale(products);
-cart();
+cart('.cart-panel-content');
 
 
 //AGREGAR PRODUCTOS AL CARRITO CUANDO SE HACE CLICK EN EL BOTÓN AGREGAR DE CADA PRODUCTO
@@ -92,7 +92,7 @@ for (const button of buttonsAddCart) {
         } else {
             alert("¡Producto agregado exitosamente!");
             saveCartProduct(newProduct);
-            cart(); //LLamo a la función cart para volver a generar el html del carrito con el nuevo producto agregado
+            cart('.cart-panel-content'); //LLamo a la función cart para volver a generar el html del carrito con el nuevo producto agregado
         }
         
     });
@@ -113,8 +113,12 @@ closeCart.addEventListener('click', () => {
 });
 
 
-//saveCartProduct(new Product(1, "Estancia Mendoza", 525, "Sauvignon Blanc", 500, "Notas de Cata: De color amarillo pálido, con tonos verdosos. En el aroma se perciben pomelo y durazno, muy intenso y refrescante. Es un vino suave, de acidez equilibrada y buena concentración. ", "images/estancia-mendoza-sauvignon-blanc.png", 30));
-//saveCartProduct(new Product(2, "Estancia Mendoza", 525, "Sauvignon Blanc", 500, "Notas de Cata: De color amarillo pálido, con tonos verdosos. En el aroma se perciben pomelo y durazno, muy intenso y refrescante. Es un vino suave, de acidez equilibrada y buena concentración. ", "images/estancia-mendoza-sauvignon-blanc.png", 30));
+//ANIMACIÓN DEL LOGO
+$('h1').animate({
+    left: '0'
+}, 'slow');
+
+
 
 
 

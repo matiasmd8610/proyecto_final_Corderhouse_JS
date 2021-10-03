@@ -6,6 +6,7 @@ header {
     top: 0;
     left: 0;
     width: 100%;
+    z-index: 100;
 
     >.container {
         display: flex;
@@ -15,52 +16,122 @@ header {
 
     h1 {
         color: #fff;
+        margin: 0;
+        position: relative;
+        left: -500px;
+        
+        @media (max-width: 991px) {
+            order: 1;
+            font-size: 1.5rem;
+        }
     }
 
     nav {
-        ul {
-            list-style: none;
-            display: flex;
-            margin: 0;
 
-            li {
-                margin: 0 15px;
+        @media (max-width: 991px) {
+            order: 0;
+        }
 
-                a {
-                    padding: 5px;
-                    text-transform: uppercase;
-                    color: #fff;
-                    font-size: 0.9em;
-                    letter-spacing: 1px;
-                    position: relative;
+        .navbar-toggler {
+            border: 0;
+            padding: 0;
+            box-shadow: none !important;
 
-                    &:after {
-                        width: 0;
-                        position: absolute;
-                        height: 1px;
-                        display: block;
-                        content: '';
-                        background-color: #fff;
-                        transition: all 0.5s ease-out;
-                        top: 26px;
-                        left: 5px;
+            .bar {
+                background-color: #ffffff;
+                display: block;
+                width: 25px;
+                height: 3px;
+                margin: 5px auto;
+                -webkit-transition: all 0.3s ease-in-out;
+                transition: all 0.3s ease-in-out;
+            }
+
+            &[aria-expanded="true"] {
+
+                .bar {
+                    &:nth-child(2) {
+                        opacity: 0;
                     }
-
-                    &:hover {
-                        color: #eee;
-
-                        &:after {
-                            width: 88%;
-                        }
+                
+                    &:nth-child(1) {
+                        transform: translateY(8px) rotate(45deg);
+                    }
+                
+                    &:nth-child(3) {
+                        transform: translateY(-8px) rotate(-45deg);
                     }
                 }
+            }
 
-                
+        }
+
+        .navbar-collapse {
+
+            @media (max-width: 991px) {
+                background-color: $primary-blue;
+                position: fixed;
+                top: 65px;
+                width: 60vw;
+                left: 0;
+                padding: 1rem;
+                height: calc(100vh - 65px);
+            }
+
+            ul {
+                list-style: none;
+                display: flex;
+                margin: 0;
+    
+                li {
+                    margin: 0 15px;
+    
+                    a {
+                        padding: 5px;
+                        text-transform: uppercase;
+                        color: #fff;
+                        font-size: 0.9em;
+                        letter-spacing: 1px;
+                        position: relative;
+    
+                        &:after, &:before {
+                            width: 0;
+                            position: absolute;
+                            height: 1px;
+                            display: block;
+                            content: '';
+                            color: #fff;
+                            background-color: #fff;
+                            transition: all 0.5s ease;
+                            top: 26px;
+                            left: 0.5rem;
+                        }
+
+                        &:before {
+                            top: 1px;
+                        }
+    
+                        &:hover {
+                            color: #eee;
+    
+                            &:after, &:before {
+                                width: calc(100% - 1rem);
+                            }
+
+                            &:before {
+                                top: 1px;
+                            }
+                        }
+                    }
+    
+                    
+                }
             }
         }
     }
 
     .cart {
+        order: 2;
         
         ul {
             margin: 0;
@@ -93,12 +164,12 @@ header {
             width: 25px;
             height: 25px;
             position: absolute;
-            left: 20px;
-            top: -16px;
+            left: 22px;
+            top: -12px;
             line-height: 1;
             text-align: center;
-            font-weight: 600;
-            font-size: 0.9rem;
+            font-size: 0.8rem;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
         }
     }
 }
