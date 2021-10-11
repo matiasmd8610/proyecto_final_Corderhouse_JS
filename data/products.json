@@ -1,0 +1,72 @@
+[
+    {
+      "id": 1,
+      "name": "Estancia Mendoza",
+      "price": 340,
+      "type": "Malbec",
+      "description": "Notas de cata: color rojo intenso con reflejos violáceos. Aromas y sabores a frutos rojos, ciruelas y frambuesas.",
+      "imageURL": "images/estancia-mendoza-malbec.png",
+      "stock": 1000,
+      "discount": 0
+    },
+    {
+      "id": 2,
+      "name": "FC Barcelona Malbec Reserva",
+      "price": 620,
+      "type": "Malbec",
+      "description": "Reserva 2020",
+      "imageURL": "images/fc-barcelona-malbec-reserva.png",
+      "stock": 1000,
+      "discount": 0
+    },
+    {
+      "id": 3,
+      "name": "Novecento",
+      "price": 258,
+      "type": "Malbec",
+      "description": "Bodega Dante Robino",
+      "imageURL": "images/novecento-malbec.png",
+      "stock": 1000,
+      "discount": 15
+    },
+    {
+      "id": 4,
+      "name": "Estancia Mendoza Sauvignon Blanc",
+      "price": 525,
+      "type": "Sauvignon Blanc",
+      "description": "Notas de Cata: De color amarillo pálido, con tonos verdosos. En el aroma se perciben pomelo y durazno, muy intenso y refrescante. Es un vino suave, de acidez equilibrada y buena concentración.",
+      "imageURL": "images/estancia-mendoza-sauvignon-blanc.png",
+      "stock": 1000,
+      "discount": 30
+    },
+    {
+      "id": 5,
+      "name": "Callia M Malbec",
+      "price": 239,
+      "type": "Malbec",
+      "description": "Callia San Juan",
+      "imageURL": "images/callia-malbec.png",
+      "stock": 1000,
+      "discount": 10
+    },
+    {
+      "id": 6,
+      "name": "Fond De Cave",
+      "price": 495,
+      "type": "Malbec",
+      "description": "Bodega Trapiche",
+      "imageURL": "images/fond-de-cave-malbec.png",
+      "stock": 1000,
+      "discount": 15
+    },
+    {
+      "id": 7,
+      "name": "Perro Callejero",
+      "price": 649,
+      "type": "Malbec",
+      "description": "Mosquita Muerta Wines",
+      "imageURL": "images/perro-callejero-malbec.png",
+      "stock": 1000,
+      "discount": 5
+    }
+]

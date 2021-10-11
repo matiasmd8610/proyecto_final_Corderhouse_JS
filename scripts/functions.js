@@ -14,7 +14,6 @@ const restrictionAge = (age) => {
 const buildCatalog = (arr) => {
     let html ='';
     arr.forEach(product => {
-            //console.log(productsContainer);
             html += `<div class="product">`;
             if (product.discount > 0) {
                 html += `<span class="discount">${product.discount}% OFF</span>` //ALT + 96
@@ -60,11 +59,11 @@ const buildCatalogOnSale = (arr) => {
 //FUNCIÓN PARA BUSCAR UN PRODUCTO YA AGREGADO EN EL CARRITO
 const searchProduct = (productId) => {
   
-    if ( !sessionStorage.getItem("productsCart") ){
+    if ( !localStorage.getItem("productsCart") ){
       return false;
     }
   
-    let almacenados = JSON.parse(sessionStorage.getItem("productsCart"));
+    let almacenados = JSON.parse(localStorage.getItem("productsCart"));
     let encontrado = false;
     let i = 0;
     while (!encontrado && i != almacenados.length ){
@@ -85,22 +84,22 @@ const searchProduct = (productId) => {
   //FUNCION PARA AGREGAR UN PRODUCTO COMPRADO AL CARRITO
   const saveCartProduct = (newProduct) => {
   
-    let item = sessionStorage.getItem("productsCart");
-    if (item) { //Pregunto si existe "productsCart" en sessionStorage
+    let item = localStorage.getItem("productsCart");
+    if (item) { //Pregunto si existe "productsCart" en localStorage
   
-      let almacenados = JSON.parse(sessionStorage.getItem("productsCart"));
+      let almacenados = JSON.parse(localStorage.getItem("productsCart"));
       //console.log(newProduct);
       almacenados.push(newProduct);
 
       let almacenados_string = JSON.stringify(almacenados);
-      sessionStorage.setItem("productsCart", almacenados_string);
+      localStorage.setItem("productsCart", almacenados_string);
   
     } else { //Si no existe lo creo y agrego el producto nuevo
   
       let almacenados = new Array();
       almacenados.push(newProduct);
       let almacenados_string = JSON.stringify(almacenados);
-      sessionStorage.setItem("productsCart", almacenados_string);
+      localStorage.setItem("productsCart", almacenados_string);
     }
 
   }
@@ -109,9 +108,9 @@ const searchProduct = (productId) => {
 //FUNCION PARA GENERAR EL HTML DE TODOS LOS PRODUCTOS DEL CARRITO
 const cart = (htmlContainer) => {
 
-    let item = sessionStorage.getItem("productsCart");
-    if (item) { //Pregunto si existe "productsCart" en sessionStorage
-        let almacenados = JSON.parse(sessionStorage.getItem("productsCart"));
+    let item = localStorage.getItem("productsCart");
+    if (item) { //Pregunto si existe "productsCart" en localStorage
+        let almacenados = JSON.parse(localStorage.getItem("productsCart"));
         let html = '';
 
         for (let i=0; i < almacenados.length; i++) {
@@ -135,7 +134,7 @@ const cart = (htmlContainer) => {
 
 //FUNCIÓN QUE CALCULA EL VALOR TOTAL DE LA COMPRA
 const cartTotal = () => {
-    let almacenados = JSON.parse(sessionStorage.getItem("productsCart"));
+    let almacenados = JSON.parse(localStorage.getItem("productsCart"));
     let cartTotalAmount = document.querySelector(".total-amount span");
     let cartTotal = 0;
     
@@ -156,7 +155,7 @@ const deleteItemCart = (id) => {
     if (confirmDelete) {
 
         const productId = id;
-        let almacenados = JSON.parse(sessionStorage.getItem("productsCart"));
+        let almacenados = JSON.parse(localStorage.getItem("productsCart"));
     
         let products = document.querySelectorAll("#cart-panel .product");
         products.forEach((element) => {
@@ -173,7 +172,7 @@ const deleteItemCart = (id) => {
     
         almacenados.splice( removeIndex, 1 );
         let almacenados_string = JSON.stringify(almacenados);
-        sessionStorage.setItem("productsCart", almacenados_string);
+        localStorage.setItem("productsCart", almacenados_string);
         totalItems();
         cartTotal();
         document.querySelector('.cart-items').textContent = totalItems();
@@ -184,7 +183,7 @@ const deleteItemCart = (id) => {
 
 //FUNCIÓN PARA MOSTRAR EL TOTAL CUANDO SE CAMBIA LA CANTIDAD DE PRODUCTOS ELEGIDA
 const changeQuantity = (id) => {
-    let almacenados = JSON.parse(sessionStorage.getItem("productsCart"));
+    let almacenados = JSON.parse(localStorage.getItem("productsCart"));
     let quantity = document.getElementById("cart-quantity-" + id).value;
 
     let productEnc = almacenados.filter((element) => {
@@ -199,19 +198,27 @@ const changeQuantity = (id) => {
 
     almacenados[index] = productEnc[0];
     almacenados_string = JSON.stringify(almacenados);
-    sessionStorage.setItem("productsCart", almacenados_string);
+    localStorage.setItem("productsCart", almacenados_string);
 
     cartTotal();
     document.querySelector('.cart-items').textContent = totalItems();
 
 }
 
+
+//FUNCIÓN QUE MUESTRA EL TOTAL DE PRODUCTOS AGREGADOS AL CARRITO EN EL GLOBO ROJO DEL CART
 const totalItems = () => {
-    let almacenados = JSON.parse(sessionStorage.getItem("productsCart"));
+    let almacenados = JSON.parse(localStorage.getItem("productsCart"));
     let totalItems = 0;
+
+    $('#end-transaction').hide();
 
     for (const product of almacenados) {
         totalItems += parseInt(product.saleAmount);
+        if (totalItems > 0) {
+            $('#end-transaction').show();
+        } else {
+        }
     }
 
     return totalItems;
