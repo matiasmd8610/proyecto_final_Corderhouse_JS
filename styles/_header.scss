@@ -107,7 +107,7 @@ header {
                             left: 0.5rem;
                         }
 
-                        &:hover {
+                        &:hover, &:focus {
                             color: #eee;
     
                             &:after {

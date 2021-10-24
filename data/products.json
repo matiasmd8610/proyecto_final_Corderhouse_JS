@@ -78,5 +78,15 @@
       "imageURL": "images/cosecha-tardia-blanco-dulce.png",
       "stock": 1000,
       "discount": 0
+    },
+    {
+      "id": 9,
+      "name": "Navarro Correas Merlot",
+      "price": 516,
+      "type": "Merlot",
+      "description": "De color rojo intenso. Sabores especiados y a frutas rojas dulces. Cuerpo medio y taninos redondos. Final muy frutado y fresco con buena persistencia.",
+      "imageURL": "images/navarro-correas-merlot.jpg",
+      "stock": 1000,
+      "discount": 25
     }
 ]
