@@ -1,7 +1,7 @@
 header {
     background-color: $primary-blue;
     padding: 10px;
-    box-shadow: 0px 2px 4px #545454;
+    box-shadow: 0px 2px 4px #222;
     position: fixed;
     top: 0;
     left: 0;
@@ -94,7 +94,7 @@ header {
                         letter-spacing: 1px;
                         position: relative;
     
-                        &:after, &:before {
+                        &:after {
                             width: 0;
                             position: absolute;
                             height: 1px;
@@ -107,19 +107,11 @@ header {
                             left: 0.5rem;
                         }
 
-                        &:before {
-                            top: 1px;
-                        }
-    
                         &:hover {
                             color: #eee;
     
-                            &:after, &:before {
+                            &:after {
                                 width: calc(100% - 1rem);
-                            }
-
-                            &:before {
-                                top: 1px;
                             }
                         }
                     }

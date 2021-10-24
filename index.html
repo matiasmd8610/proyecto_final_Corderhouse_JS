@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Simulador Interactivo - CheapWines Store</title>
+    <link rel="shortcut icon" href="images/favicon.jpg">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Dosis:wght@400;600&family=Monoton&display=swap" rel="stylesheet">
@@ -111,6 +112,14 @@
                                 <input type="checkbox" value="Syrah" name="type" id="syrah">
                                 <label for="syrah">Syrah</label>
                             </div>
+                            <div>
+                                <input type="checkbox" value="Blanco Dulce" name="type" id="blanco-dulce">
+                                <label for="blanco-dulce">Blanco Dulce</label>
+                            </div>
+                            <div>
+                                <input type="checkbox" value="Sauvignon Blanc" name="type" id="sauvignon-blanc">
+                                <label for="sauvignon-blanc">Sauvignon Blanc</label>
+                            </div>
                         </div>
 
                         <div class="price mt-5">
@@ -136,29 +145,97 @@
 
         <section id="checkout">
             <div class="container">
-                <h2>Complete sus datos personas para finalizar la compra</h2>
-                <form action="" method="POST">
-                    <div>
-                        <input type="text" name="name" id="name" placeholder="Nombre">
-                        <input type="text" name="surname" id="surname" placeholder="Apellido">
+                <form id="checkout-form" action="" method="POST">
+                    <h2>Complete sus datos personas para finalizar la compra</h2>
+                    <div class="row mb-0">
+                        <div class="col-lg-6">
+                            <input type="text" name="name" id="name" placeholder="Nombre">
+                            <small class="error-msg"></small>
+                        </div>
+                        <div class="col-lg-6">
+                            <input type="text" name="surname" id="surname" placeholder="Apellido">
+                            <small class="error-msg"></small>
+                        </div>
+                        <div class="col-lg-12">
+                            <input type="email" name="email" id="email" placeholder="E-mail">
+                            <small class="error-msg"></small>
+                        </div>
+                        <div class="col-lg-6">
+                            <input type="text" name="street" id="street" placeholder="Calle">
+                            <small class="error-msg"></small>
+                        </div>
+                        <div class="col-lg-3">
+                            <input type="text" name="number" id="number" placeholder="Número">
+                            <small class="error-msg"></small>
+                        </div>
+                        <div class="col-lg-3">
+                            <input type="text" name="floor" id="floor" placeholder="Piso">
+                            <small class="error-msg"></small>
+                        </div>
+                        <div class="col-lg-5">
+                            <input type="text" name="city" id="city" placeholder="Ciudad">
+                            <small class="error-msg"></small>
+                        </div>
+                        <div class="col-lg-3">
+                            <input type="number" name="postal-code" id="postal-code" placeholder="Código Postal">
+                            <small class="error-msg"></small>
+                        </div>
+                        <div class="col-lg-4">
+                            <select name="province" id="province">
+                                <option value="0">Seleccione provincia</option>
+                                <option value="Buenos Aires">Buenos Aires</option>
+                                <option value="Córdoba">Córdoba</option>
+                                <option value="Corrientes">Corrientes</option>
+                                <option value="Santa Cruz">Santa Cruz</option>
+                                <option value="Salta">Salta</option>
+                                <option value="Entre Rios">Entre Rios</option>
+                                <option value="Santa Fé">Santa Fé</option>
+                                <option value="Chaco">Chaco</option>
+                                <option value="Jujuy">Jujuy</option>
+                                <option value="Rio Negro">Rio Negro</option>
+                                <option value="Misiones">Misiones</option>
+                                <option value="San Luis">San Luis</option>
+                                <option value="Mendoza">Mendoza</option>
+                            </select>
+                            <small class="error-msg"></small>
+                        </div>
                     </div>
-                    <div>
-                        <input type="email" name="email" id="email" placeholder="E-mail">
+
+                    <h2 class="mt-5">Complete los datos de Pago</h2>
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <select name="card-type" id="card-type">
+                                <option value="0">Seleccione forma de pago</option>
+                                <option value="debit">Tarjeta de Débito</option>
+                                <option value="credit">Tarjeta de Crédito</option>
+                            </select>
+                            <small class="error-msg"></small>
+                        </div>
+                        <div class="col-lg-6">
+                            <input type="text" name="credit-card-number" id="credit-card-number" placeholder="Número de Tarjeta">
+                            <small class="error-msg"></small>
+                        </div>
+                        <div class="col-lg-5">
+                            <input type="text" name="credit-card-name" id="credit-card-name" placeholder="Nombre y Apellido">
+                            <small class="error-msg"></small>
+                        </div>
+                        <div class="col-lg-4">
+                            <input type="text" name="expiration-date" id="expiration-date" placeholder="Fecha de expiración (Ej: 04/24)">
+                            <small class="error-msg"></small>
+                        </div>
+                        <div class="col-lg-3">
+                            <input type="text" name="security-code" id="security-code" placeholder="Cód. de Seg. (Ej: 145)">
+                            <small class="error-msg"></small>
+                        </div>
+                        <div class="col-lg-12 d-flex justify-content-center mt-3">
+                            <button type="submit" id="send" name="send" class="btn btn-primary">Finalizar Compra</button>
+                            <button type="button" id="btn-keep-buying" name="keep-buyinh" class="btn btn-primary">Seguir Comprando</button>
+                        </div>
                     </div>
-                    <div>
-                        <input type="text" name="streeet" id="street" placeholder="Calle">
-                        <input type="number" name="number" id="number" placeholder="Número">
-                        <input type="text" name="floor" id="floor" placeholder="Piso">
-                    </div>
-                    <div>
-                        <input type="text" name="city" id="city" placeholder="Ciudad">
-                        <input type="number" name="postal-code" id="postal-code" placeholder="Código Postal">
-                        <input type="number" name="province" id="province" placeholder="Provincia">
-                    </div>
-                    <!--<div>
-                        <button type="submit" id="send" name="send" class="btn btn-primary">Finalizar Compra</button>
-                    </div>-->
+
                 </form>
+
+                <div id="success-message">¡Muchas gracias por su compra!</div>
 
             </div>
         </section>

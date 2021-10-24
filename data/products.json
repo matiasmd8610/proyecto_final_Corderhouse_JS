@@ -68,5 +68,15 @@
       "imageURL": "images/perro-callejero-malbec.png",
       "stock": 1000,
       "discount": 5
+    },
+    {
+      "id": 8,
+      "name": "Cosecha Tardía Blanco Dulce",
+      "price": 389,
+      "type": "Blanco Dulce",
+      "description": "Bodega Norton Mendoza",
+      "imageURL": "images/cosecha-tardia-blanco-dulce.png",
+      "stock": 1000,
+      "discount": 0
     }
 ]
